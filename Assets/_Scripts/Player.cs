@@ -4,17 +4,16 @@ using System.Collections;
 public class Player : MonoBehaviour {
     private float f_speed = 5f;
     private GameObject ObjPlayer;
+    private GameObject ObjFlag;
     private Lives scr_lives;
-    private Flag scr_flag;
+    private Flag scr_Flag;
 
-    [SerializeField]
-    private bool isCarrying = false;
-    
-	
 	void Start () {
         ObjPlayer = GameObject.Find("Player");
+        ObjFlag = GameObject.Find("Flag");
 
         scr_lives = ObjPlayer.GetComponent<Lives>();
+        scr_Flag = ObjFlag.GetComponent<Flag>();
 
         // Variables
         scr_lives.i_Armour = 50;
@@ -23,6 +22,7 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate () {
         Movement();
+        CarryingObject();
     }
 
 
@@ -43,19 +43,14 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Triggerd");
-        if (other.gameObject.tag == "flag") {
-            scr_flag.AbleToPickUp = true;
-
-            if (scr_flag.AbleToPickUp = true && Input.GetKey(KeyCode.Space)) {
-                Debug.Log("HALLO");
-            }
+    void CarryingObject() {
+        if (scr_Flag._isCarrying)
+        {
+            f_speed = .5f;
         }
-        
-        
+        else {
+            f_speed = 5f;
+        }
     }
-    //
-
 }
 

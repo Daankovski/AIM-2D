@@ -3,38 +3,44 @@ using System.Collections;
 
 public class Flag : MonoBehaviour {
     private GameObject ObjFlag;
+    private GameObject ObjPlayer;
 
-    private Player scr_player;
     [SerializeField]
-    private bool isAbleToPickup = false;
-
+    private bool isPickedUp = false;
 
     // Getters & Setters
-        public bool AbleToPickUp {
+       public bool _isCarrying {
             get {
-                return isAbleToPickup;
+                return isPickedUp;
             }
             set {
-                isAbleToPickup = value;
+                isPickedUp = value;
             }
-        }
-
+        }    
     //
-
-	// Use this for initialization
+    
 	void Start () {
-        scr_player = GetComponent<Player>();
+        ObjPlayer = GameObject.Find("Player");
         ObjFlag = GameObject.Find("Flag");
 	}
 
-	
-	// Update is called once per frame
 	void FixedUpdate () {
-	    
+        if (isPickedUp) {
+            ObjFlag.transform.position = new Vector3(ObjPlayer.transform.position.x, ObjPlayer.transform.position.y, 0f);
+        }
 	}
 
-    void OnTriggerEnter2D(Collision2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isPickedUp)
+            {
+                isPickedUp = false;
+            }
+            else {
+                isPickedUp = true;
+            }
+        }
     }
 }
