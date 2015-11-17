@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
     private float f_speed = 5f;
+    [SerializeField]
+    private float i_leechTimer = 0;
     private GameObject ObjPlayer;
     private GameObject ObjFlag;
     private Lives scr_lives;
@@ -19,6 +21,10 @@ public class Player : MonoBehaviour {
         scr_lives.i_Armour = 50;
         //
 	}
+
+    void Update() {
+
+    }
 
     void FixedUpdate () {
         Movement();
@@ -47,6 +53,13 @@ public class Player : MonoBehaviour {
         if (scr_Flag._isCarrying)
         {
             f_speed = .5f;
+            if (i_leechTimer >= 10)
+            {
+                i_leechTimer = 0;
+                scr_lives.i_Lives -= .5f;            }
+            else {
+                i_leechTimer ++;
+            }
         }
         else {
             f_speed = 5f;

@@ -4,30 +4,30 @@ using System.Collections;
 public class Lives : MonoBehaviour {
 
     [SerializeField]
-    private int i_baseLives = 100;
+    private float f_baseLives = 100f;
     [SerializeField]
-    private int i_baseArmour; 
+    private float f_baseArmour; 
     
     void Start () {
 	    
 	}
 
     //  Getters & Setters
-        public int i_Lives {
+        public float i_Lives {
             get {
-                return i_baseLives;
+                return f_baseLives;
             }
             set {
-                i_baseLives = value;
+                f_baseLives = value;
             }
         }
 
-        public int i_Armour {
+        public float i_Armour {
             get {
-                return i_baseArmour;
+                return f_baseArmour;
             }
             set {
-                i_baseArmour = value;
+                f_baseArmour = value;
             }
         }
     //
@@ -37,7 +37,7 @@ public class Lives : MonoBehaviour {
 	}
 
     void Death() {
-        if (i_baseLives <= 0) {
+        if (f_baseLives <= 0) {
             Destroy(gameObject);
         }
     }
