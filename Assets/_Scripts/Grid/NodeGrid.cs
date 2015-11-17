@@ -9,7 +9,9 @@ public class NodeGrid : MonoBehaviour {
     private int sizeY = 10;
     //public GameObject[,] tiles = new GameObject[10, 10];
     [SerializeField]
-    private GameObject[] tiles; 
+    private GameObject[] tiles;
+    [SerializeField]
+    private GameObject prefTurret;
     void Start () {
         //tiles = new GameObject[sizeX * sizeY];
         int z = 0;
@@ -27,11 +29,23 @@ public class NodeGrid : MonoBehaviour {
             }
             
         }
-        tiles[1].GetComponent<Tile>().ChangeStatus();
+        
     }
     
 	
 	void Update () {
-        
+        for(int i = 0; i<tiles.Length -1; i++)
+        {
+            if (tiles[i] != null)
+            {
+                if (tiles[i].GetComponent<Tile>().clicked)
+                {
+                    tiles[i].GetComponent<Tile>().ChangeStatus();
+                    
+                    GameObject temp2 = Instantiate(prefTurret, tiles[i].transform.position, Quaternion.identity) as GameObject;
+                }
+            }
+        }
     }
+
 }

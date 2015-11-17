@@ -5,7 +5,7 @@ public class BaseEnemy : Health {
 
     public Transform target;
     public float speed;
-    public bool Attacking = false;
+    public bool isAttacking = false;
     [SerializeField]
     private int damage = 10;
     // Use this for initialization
@@ -16,12 +16,12 @@ public class BaseEnemy : Health {
     {
         
         //if the enemy collides with an obstacle with a trigger event, it will stop and attack.
-        Attacking = true;
+        isAttacking = true;
         StartCoroutine(Attack(other));
     }
     void OnTriggerExit2D()
     {
-        Attacking = false;
+        isAttacking = false;
         
     }
 
@@ -32,20 +32,20 @@ public class BaseEnemy : Health {
         yield return new WaitForSeconds(1);
         
         Debug.Log("attack!");
-        if(Attacking && other!= null)
+        if(isAttacking && other!= null)
         {
             StartCoroutine(Attack(other));
         }
         else
         {
-            Attacking = false;
+            isAttacking = false;
         }
     }
     // Update is called once per frame
     void Update()
     {
         Bar();
-        if (!Attacking)
+        if (!isAttacking)
         {
             
             float step = speed * Time.deltaTime;

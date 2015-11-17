@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour {
 
 
 	void Start () {
-        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.0f);
         
     }
 	public void ChangeStatus()
@@ -26,6 +26,11 @@ public class Tile : MonoBehaviour {
     }
 
     void Update () {
+        if(taken)
+        {
+            clicked = false;
+            gameObject.SetActive(false);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             if(hover && clicked ==false)
@@ -36,7 +41,7 @@ public class Tile : MonoBehaviour {
             else
             {
                 clicked = false;
-                GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
+                GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.0f);
             }
         }
     }
@@ -46,7 +51,7 @@ public class Tile : MonoBehaviour {
         hover = false;
         if(!clicked)
         {
-            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.0f);
         }
     }
 

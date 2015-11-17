@@ -5,19 +5,24 @@ public class Health : MonoBehaviour {
     public float health =100;
     private GameObject healthBar;
     private float alpha = 0;
-    public void Start () {
-        //Damage(0);
-        
+
+    void Start () {
+        healthBar = transform.FindChild("health").gameObject;
+
     }
-    
-	public void Damage(int damagevalue)
+
+    public void Damage(int damagevalue)
     {
         
-        healthBar = transform.FindChild("health").gameObject;
-        healthBar.transform.localScale = new Vector3(health/50, 2, 1f);
+        
         health -= damagevalue;
         alpha = 1;
-        if(health <= 0)
+        if(healthBar != null)
+        {
+            healthBar.transform.localScale = new Vector3(health / 50, 2, 1f);
+        }
+        
+        if (health <= 0)
         {
             Destroy(this.gameObject);
         }

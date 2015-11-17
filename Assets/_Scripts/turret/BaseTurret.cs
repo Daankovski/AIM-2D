@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 public class BaseTurret : Health {
-    
+
+
+    private int ID;
     [SerializeField]
     private float resetTime;
     [SerializeField]
@@ -18,9 +20,9 @@ public class BaseTurret : Health {
     private int damageBoost = 10;
 
     private GameObject fieldImage;
+    private SpriteRenderer fieldsprite;
 
     [SerializeField]
-
     private int upgradeLvl = 1;
     private int maxLvl = 5;
     
@@ -29,10 +31,17 @@ public class BaseTurret : Health {
     void Start () {
         
         fieldImage = transform.FindChild("field").gameObject;
-
+        fieldsprite = fieldImage.GetComponent<SpriteRenderer>();
+        fieldsprite.color = new Color(1f, 1f, 1f, 0.0f);
         //begins with shoot loop.
         StartCoroutine(Shoot()); 
 	}
+
+    public void SetID(int value)
+    {
+        ID = value;
+        Debug.Log
+    }
     void UpgradeTurret()
     {
         range += rangeBoost;
@@ -54,11 +63,18 @@ public class BaseTurret : Health {
         }
         //waits for an amount of time.
         yield return new WaitForSeconds(resetTime);
-        
         StartCoroutine(Shoot());
     }
-	// Update is called once per frame
-	void Update () {
+    void OnMouseEnter()
+    {
+        fieldsprite.color = new Color(1f, 1f, 1f, 0.3f);
+    }
+    void OnMouseExit()
+    {
+        fieldsprite.color = new Color(1f, 1f, 1f, 0.0f);
+    }
+    void Update () {
+        
         //scales the circle with the range of the turret.
         fieldImage.transform.localScale = new Vector3(range, range, 0f);
         Bar();
