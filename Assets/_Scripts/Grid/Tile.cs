@@ -5,12 +5,11 @@ public class Tile : MonoBehaviour {
 
     public bool taken = false;
     public bool clicked = false;
-    private Ray ray;
     public bool hover = false;
-
+    public bool visible = false;
 
 	void Start () {
-        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.0f);
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
         
     }
 	public void ChangeStatus()
@@ -26,22 +25,28 @@ public class Tile : MonoBehaviour {
     }
 
     void Update () {
-        if(taken)
+        if(!visible)
+        {
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.0f);
+        }
+        if (taken)
         {
             clicked = false;
-            gameObject.SetActive(false);
         }
-        if (Input.GetMouseButtonDown(0))
+        else
         {
-            if(hover && clicked ==false)
+            if (Input.GetMouseButtonDown(0) && visible)
             {
-                clicked = true;
-                GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
-            }
-            else
-            {
-                clicked = false;
-                GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.0f);
+                if (hover && clicked == false)
+                {
+                    clicked = true;
+                    GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+                }
+                else
+                {
+                    clicked = false;
+                    GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
+                }
             }
         }
     }
@@ -51,7 +56,7 @@ public class Tile : MonoBehaviour {
         hover = false;
         if(!clicked)
         {
-            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.0f);
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
         }
     }
 
