@@ -2,15 +2,21 @@
 using System.Collections;
 public class BaseTurret : Health {
 
-    private GameObject grid;
+    [SerializeField]
+    private bool projectileIsBullet = false;
+    private LineRenderer lineRenderer;
+    private GameObject hitPoint;
+
+    public GameObject grid;
     public int IDpos = 0;
+
     [SerializeField]
     private float resetTime;
     [SerializeField]
     private float resetTimeBoost;
 
     [SerializeField]
-    private float range = 4f;
+    protected float range = 4f;
     [SerializeField]
     private float rangeBoost = 1f;
 
@@ -19,7 +25,7 @@ public class BaseTurret : Health {
     [SerializeField]
     private int damageBoost = 10;
 
-    private GameObject fieldImage;
+    protected GameObject fieldImage;
     private SpriteRenderer fieldsprite;
 
     [SerializeField]
@@ -27,9 +33,13 @@ public class BaseTurret : Health {
     private int maxLvl = 5;
     
 
-    // Use this for initialization
     void Start () {
-        
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.enabled = true;
+        hitPoint = transform.FindChild("hitpoint").gameObject;
+        hitPoint.SetActive(false);
+
+
         fieldImage = transform.FindChild("field").gameObject;
         fieldsprite = fieldImage.GetComponent<SpriteRenderer>();
         fieldsprite.color = new Color(1f, 1f, 1f, 0.0f);
@@ -47,14 +57,33 @@ public class BaseTurret : Health {
         resetTime += resetTimeBoost;
         damage += damageBoost;
     }
-	IEnumerator Shoot()
+	protected IEnumerator Shoot()
     {
         //checks all targets within the range
         Collider2D[] targets = Physics2D.OverlapCircleAll(this.transform.position, range, 1 << LayerMask.NameToLayer("enemy"));
         if (targets.Length != 0)
         {
             //laser or projectile
-            Debug.DrawLine(this.transform.position, targets[0].transform.position, Color.white,0.5f);
+            if(!projectileIsBullet)
+            {
+                //Debug.DrawLine(this.transform.position, targets[0].transform.position, Color.white, 0.5f);
+                hitPoint.SetActive(true);
+
+                hitPoint.transform.position = targets[0].transform.position;
+                Vector3 temp = hitPoint.transform.position;
+                temp.z -= 1f;
+                hitPoint.transform.position = temp;
+
+                lineRenderer.enabled = true;
+
+                
+                Vector3 hitPos = (targets[0].transform.position -transform.position)*1.9f;
+                hitPos.z -= 1;
+                lineRenderer.SetPosition(1, hitPos);
+                
+                
+            }
+            
 
             //hurts the target
             targets[0].GetComponent<BaseEnemy>().Damage(damage);
@@ -62,17 +91,24 @@ public class BaseTurret : Health {
         }
         //waits for an amount of time.
         yield return new WaitForSeconds(resetTime);
+        hitPoint.SetActive(false);
+        lineRenderer.enabled = false;
         StartCoroutine(Shoot());
     }
     void OnMouseEnter()
     {
+        fieldImage = transform.FindChild("field").gameObject;
+        fieldsprite = fieldImage.GetComponent<SpriteRenderer>();
         fieldsprite.color = new Color(1f, 1f, 1f, 0.3f);
     }
     void OnMouseExit()
     {
+        fieldImage = transform.FindChild("field").gameObject;
+        fieldsprite = fieldImage.GetComponent<SpriteRenderer>();
         fieldsprite.color = new Color(1f, 1f, 1f, 0.0f);
     }
     void Update () {
+
         if (health <=0)
         {
             Destroy(this.gameObject);

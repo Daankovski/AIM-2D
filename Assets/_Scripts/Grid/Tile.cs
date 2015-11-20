@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Tile : MonoBehaviour {
 
+    //deze booleans zijn de statusen van de button.
     public bool taken = false;
     public bool clicked = false;
     public bool hover = false;
@@ -14,6 +15,7 @@ public class Tile : MonoBehaviour {
     }
 	public void ChangeStatus()
     {
+        
         if(taken ==true)
         {
             taken = false;

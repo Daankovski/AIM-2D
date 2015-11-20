@@ -10,13 +10,11 @@ public class UIManager : MonoBehaviour {
 
 
 
-    // Use this for initialization
     void Start () {
         grid = GameObject.Find("Grid");
         turretButton = GameObject.Find("buildbutton");
     }
 	
-	// Update is called once per frame
 	void Update () {
 	    if(turretButton.GetComponent<Button>().clicked)
         {

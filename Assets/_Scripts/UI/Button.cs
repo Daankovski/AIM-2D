@@ -4,11 +4,16 @@ using System.Collections;
 public class Button : MonoBehaviour {
 
     public bool clicked = false;
-	// Use this for initialization
-	void Start () {
-	    
-	}
-	void OnMouseDown()
+
+    void OnMouseEnter()
+    {
+        this.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+    }
+    void OnMouseExit()
+    {
+        this.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+    }
+    void OnMouseDown()
     {
         if(clicked)
         {
@@ -18,10 +23,5 @@ public class Button : MonoBehaviour {
         {
             clicked = true;
         }
-        
     }
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
