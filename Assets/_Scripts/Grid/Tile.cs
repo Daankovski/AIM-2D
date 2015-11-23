@@ -3,18 +3,20 @@ using System.Collections;
 
 public class Tile : MonoBehaviour {
 
+    //deze booleans zijn de statusen van de button.
     public bool taken = false;
     public bool clicked = false;
-    private Ray ray;
     public bool hover = false;
-
+    public bool visible = false;
 
 	void Start () {
+
         GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
         
     }
 	public void ChangeStatus()
     {
+        
         if(taken ==true)
         {
             taken = false;
@@ -26,17 +28,29 @@ public class Tile : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetMouseButtonDown(0))
+        if(!visible)
         {
-            if(hover && clicked ==false)
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.0f);
+        }
+        if (taken)
+        {
+            clicked = false;
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0) && visible)
             {
-                clicked = true;
-                GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
-            }
-            else
-            {
-                clicked = false;
-                GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
+                if (hover && clicked == false)
+                {
+                    clicked = true;
+
+                    GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+                }
+                else
+                {
+                    clicked = false;
+                    GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
+                }
             }
         }
     }

@@ -3,13 +3,12 @@ using System.Collections;
 
 public class BaseEnemy : Health {
 
-    private Transform target;
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private bool Attacking = false;
+    public Transform target;
+    public float speed;
+    public bool isAttacking = false;
     [SerializeField]
     private int damage = 10;
+
     // Use this for initialization
     void Start () {
 	
@@ -18,36 +17,46 @@ public class BaseEnemy : Health {
     {
         
         //if the enemy collides with an obstacle with a trigger event, it will stop and attack.
-        Attacking = true;
+        isAttacking = true;
         StartCoroutine(Attack(other));
     }
     void OnTriggerExit2D()
     {
-        Attacking = false;
+        isAttacking = false;
         
     }
 
     IEnumerator Attack(Collider2D other)
     {
-
-        other.GetComponent<Health>().Damage(damage);
+        Wall wallscript = other.GetComponent<Wall>();
+        if(wallscript != null)
+        {
+            other.GetComponent<Wall>().Damage(damage);
+        }
+        else
+        {
+            other.GetComponent<Health>().Damage(damage);
+        }
         yield return new WaitForSeconds(1);
         
-        Debug.Log("attack!");
-        if(Attacking && other!= null)
+        if(isAttacking && other!= null)
         {
             StartCoroutine(Attack(other));
         }
         else
         {
-            Attacking = false;
+            isAttacking = false;
         }
     }
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
         Bar();
-        if (!Attacking)
+        if (!isAttacking)
         {
             
             float step = speed * Time.deltaTime;
