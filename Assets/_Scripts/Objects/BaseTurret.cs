@@ -7,6 +7,9 @@ public class BaseTurret : Health {
     private LineRenderer lineRenderer;
     private GameObject hitPoint;
 
+    [SerializeField]
+    private GameObject bulletPref;
+
     public GameObject grid;
     public int IDpos = 0;
 
@@ -75,13 +78,15 @@ public class BaseTurret : Health {
                 hitPoint.transform.position = temp;
 
                 lineRenderer.enabled = true;
-
                 
                 Vector3 hitPos = (targets[0].transform.position -transform.position)*1.9f;
                 hitPos.z -= 1;
                 lineRenderer.SetPosition(1, hitPos);
-                
-                
+            }
+            else
+            {
+                GameObject temp = Instantiate(bulletPref, transform.position, Quaternion.identity) as GameObject;
+                temp.GetComponent<Bullet>().DeclareTarget(targets[0].gameObject);
             }
             
 
