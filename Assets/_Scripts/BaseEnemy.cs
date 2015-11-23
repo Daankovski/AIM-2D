@@ -3,9 +3,11 @@ using System.Collections;
 
 public class BaseEnemy : Health {
 
-    public Transform target;
-    public float speed;
-    public bool Attacking = false;
+    private Transform target;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private bool Attacking = false;
     [SerializeField]
     private int damage = 10;
     // Use this for initialization

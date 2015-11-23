@@ -7,20 +7,17 @@ public class Player : MonoBehaviour {
     private float i_leechTimer = 0;
     private GameObject ObjPlayer;
     private GameObject ObjFlag;
-    private Lives scr_lives;
+    private Health scr_Health;
     private Flag scr_Flag;
 
 	void Start () {
         ObjPlayer = GameObject.Find("Player");
         ObjFlag = GameObject.Find("Flag");
 
-        scr_lives = ObjPlayer.GetComponent<Lives>();
+        scr_Health = ObjPlayer.GetComponent<Health>();
         scr_Flag = ObjFlag.GetComponent<Flag>();
 
-        // Variables
-        scr_lives.i_Armour = 50;
-        //
-	}
+        }
 
     void Update() {
 
@@ -45,7 +42,7 @@ public class Player : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Enemy") {
-            scr_lives.i_Lives -= 5 ;
+            scr_Health.i_Lives -= 5 ;
         }
     }
 
@@ -56,7 +53,7 @@ public class Player : MonoBehaviour {
             if (i_leechTimer >= 10)
             {
                 i_leechTimer = 0;
-                scr_lives.i_Lives -= .5f;            }
+                scr_Health.i_Lives -= .5f;            }
             else {
                 i_leechTimer ++;
             }

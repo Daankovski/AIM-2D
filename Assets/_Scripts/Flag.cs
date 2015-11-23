@@ -4,7 +4,7 @@ using System.Collections;
 public class Flag : MonoBehaviour {
     private GameObject ObjFlag;
     private GameObject ObjPlayer;
-    private Lives scr_lives;
+    private Health scr_Health;
 
     [SerializeField]
     private int i_PickupCooldown = 0;
@@ -27,7 +27,7 @@ public class Flag : MonoBehaviour {
 	void Start () {
         ObjPlayer = GameObject.Find("Player");
         ObjFlag = GameObject.Find("Flag");
-        scr_lives = ObjFlag.GetComponent<Lives>();
+        scr_Health = ObjFlag.GetComponent<Health>();
 	}
 
 	void FixedUpdate () {
@@ -53,7 +53,7 @@ public class Flag : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            scr_lives.i_Lives -= 5;
+            scr_Health.i_Lives -= 5;
         }
     }
 

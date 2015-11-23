@@ -2,22 +2,50 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-    public float health =100;
+    [SerializeField]
+    private float f_baseLives = 100f;
     private GameObject healthBar;
     private float alpha = 0;
+
+    [SerializeField]
+    private float f_baseArmour;
+
     public void Start () {
-        //Damage(0);
-        
+        //Damage(0);    
     }
-    
-	public void Damage(int damagevalue)
+
+    public float i_Lives
+    {
+        get
+        {
+            return f_baseLives;
+        }
+        set
+        {
+            f_baseLives = value;
+        }
+    }
+
+    public float i_Armour
+    {
+        get
+        {
+            return f_baseArmour;
+        }
+        set
+        {
+            f_baseArmour = value;
+        }
+    }
+
+    public void Damage(int damagevalue)
     {
         
         healthBar = transform.FindChild("health").gameObject;
-        healthBar.transform.localScale = new Vector3(health/50, 2, 1f);
-        health -= damagevalue;
+        healthBar.transform.localScale = new Vector3(f_baseLives/50, 2, 1f);
+        f_baseLives -= damagevalue;
         alpha = 1;
-        if(health <= 0)
+        if(f_baseLives <= 0)
         {
             Destroy(this.gameObject);
         }
