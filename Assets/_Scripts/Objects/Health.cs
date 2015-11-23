@@ -9,7 +9,6 @@ public class Health : MonoBehaviour {
     void Start () {
         //haalt de healthbar object in de child.
         healthBar = transform.FindChild("health").gameObject;
-
     }
 
     public void Damage(int damagevalue)
@@ -31,7 +30,7 @@ public class Health : MonoBehaviour {
     IEnumerator Death()
     {
         yield return new WaitForSeconds(0.1f);
-        if(this.gameObject != null && this.gameObject.tag != "GridObject")
+        if(this.gameObject.tag != "enemy")
         {
             Destroy(this.gameObject);
         }

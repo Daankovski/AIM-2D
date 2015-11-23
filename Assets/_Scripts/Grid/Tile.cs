@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour {
     public bool visible = false;
 
 	void Start () {
+
         GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.05f);
         
     }
@@ -42,6 +43,7 @@ public class Tile : MonoBehaviour {
                 if (hover && clicked == false)
                 {
                     clicked = true;
+
                     GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
                 }
                 else

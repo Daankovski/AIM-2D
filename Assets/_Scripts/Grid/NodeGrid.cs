@@ -12,8 +12,12 @@ public class NodeGrid : MonoBehaviour {
     private int sizeY = 8;
     [SerializeField]
     private GameObject[] tiles;
-    [SerializeField]
-    private GameObject prefTurret;
+
+    public GameObject prefTurret;
+    public GameObject prefTurret2;
+    public GameObject prefWall;
+    public GameObject currentPref;
+
 
     void Start () {
         int z = 0;
@@ -43,6 +47,7 @@ public class NodeGrid : MonoBehaviour {
         //en zo niet, dan wordt ie onzichtbaar en is de click functie uitgeschakelt.
         if (BuildMode)
         {
+            
             for (int i = 0; i < tiles.Length - 1; i++)
             {
                 tiles[i].GetComponent<BoxCollider2D>().enabled = true;
@@ -68,7 +73,7 @@ public class NodeGrid : MonoBehaviour {
                 {
                     currentID = i;
                     tiles[i].GetComponent<Tile>().ChangeStatus();
-                    GameObject temp2 = Instantiate(prefTurret, tiles[i].transform.position, Quaternion.identity) as GameObject;
+                    GameObject temp2 = Instantiate(currentPref, tiles[i].transform.position, Quaternion.identity) as GameObject;
                     
                 }
         }

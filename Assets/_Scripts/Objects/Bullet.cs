@@ -22,7 +22,6 @@ public class Bullet : MonoBehaviour {
             {
                 Destroy(this.gameObject);
             }
-            Debug.Log(distance);
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
         }
         else

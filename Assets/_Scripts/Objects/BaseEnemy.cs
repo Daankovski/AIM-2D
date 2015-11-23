@@ -8,6 +8,7 @@ public class BaseEnemy : Health {
     public bool isAttacking = false;
     [SerializeField]
     private int damage = 10;
+
     // Use this for initialization
     void Start () {
 	
@@ -27,8 +28,15 @@ public class BaseEnemy : Health {
 
     IEnumerator Attack(Collider2D other)
     {
-
-        other.GetComponent<Health>().Damage(damage);
+        Wall wallscript = other.GetComponent<Wall>();
+        if(wallscript != null)
+        {
+            other.GetComponent<Wall>().Damage(damage);
+        }
+        else
+        {
+            other.GetComponent<Health>().Damage(damage);
+        }
         yield return new WaitForSeconds(1);
         
         if(isAttacking && other!= null)
@@ -43,6 +51,10 @@ public class BaseEnemy : Health {
     // Update is called once per frame
     void Update()
     {
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
         Bar();
         if (!isAttacking)
         {
