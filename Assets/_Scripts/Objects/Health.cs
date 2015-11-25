@@ -2,40 +2,30 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-    [SerializeField]
-    private float f_baseLives = 100f;
+    public float maxHealth = 100;
+    protected float currentHealth = 100;
     private GameObject healthBar;
     private float alpha = 1;
 
     void Start () {
         //haalt de healthbar object in de child.
+        currentHealth = maxHealth;
+        Debug.Log(currentHealth);
         healthBar = transform.FindChild("health").gameObject;
     }
 
-    public float i_Lives
-    {
-        get
-        {
-            return f_baseLives;
-        }
-        set
-        {
-            f_baseLives = value;
-        }
-    }
-    
     public void Damage(float damagevalue)
     {
         //als het object aan schade lijdt, wordt de health bar ge weergeeft en wordt de health vermindert, 
         //ook checkt ie of het object 0 helath heeft.
-        f_baseLives -= damagevalue;
+        currentHealth -= damagevalue;
         alpha = 1;
         if(healthBar != null)
         {
-            healthBar.transform.localScale = new Vector3(f_baseLives / 50, 2, 1f);
+            healthBar.transform.localScale = new Vector3(currentHealth / maxHealth *2, 2, 1f);
         }
         
-        if (f_baseLives <= 0)
+        if (currentHealth <= 0)
         {
             StartCoroutine(Death());
         }

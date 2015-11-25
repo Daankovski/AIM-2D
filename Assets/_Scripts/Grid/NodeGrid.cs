@@ -18,6 +18,10 @@ public class NodeGrid : MonoBehaviour {
     public GameObject prefWall;
     public GameObject currentPref;
 
+    [SerializeField]
+    private GameObject uiManager;
+    [SerializeField]
+    private GameObject waveManager;
 
     void Start () {
         int z = 0;
@@ -33,7 +37,11 @@ public class NodeGrid : MonoBehaviour {
             }
             
         }
-        
+
+        currentID = 50;
+        tiles[50].GetComponent<Tile>().ChangeStatus();
+        GameObject temp2 = Instantiate(prefTurret2, tiles[50].transform.position, Quaternion.identity) as GameObject;
+
     }
     public void ClearTile(int position)
     {
@@ -50,16 +58,26 @@ public class NodeGrid : MonoBehaviour {
             
             for (int i = 0; i < tiles.Length - 1; i++)
             {
-                tiles[i].GetComponent<BoxCollider2D>().enabled = true;
-                tiles[i].GetComponent<SpriteRenderer>().enabled = true;
-                tiles[i].GetComponent<Tile>().visible = true;
+                if(tiles[i].GetComponent<Tile>().taken == false )
+                {
+                    tiles[i].GetComponent<BoxCollider>().enabled = true;
+                    tiles[i].GetComponent<SpriteRenderer>().enabled = true;
+                    tiles[i].GetComponent<Tile>().visible = true;
+                }
+                else
+                {
+                    tiles[i].GetComponent<BoxCollider>().enabled = false;
+                    tiles[i].GetComponent<SpriteRenderer>().enabled = false;
+                    tiles[i].GetComponent<Tile>().visible = false;
+                }
             }
+            
         }
         else
         {
             for (int i = 0; i < tiles.Length - 1; i++)
             {
-                tiles[i].GetComponent<BoxCollider2D>().enabled = false;
+                tiles[i].GetComponent<BoxCollider>().enabled = false;
                 tiles[i].GetComponent<SpriteRenderer>().enabled = false;
                 tiles[i].GetComponent<Tile>().visible = false;
             }
@@ -67,10 +85,15 @@ public class NodeGrid : MonoBehaviour {
 
 
         //als er een tile wordt geklikt in de buildmode komt er een object op die plaats (tot nu toe een turret!)
-        for(int i = 0; i<tiles.Length -1; i++)
+        float tempPrice = uiManager.GetComponent<UIManager>().tempPrice;
+        float currentCoins = uiManager.GetComponent<UIManager>().currentCoins;
+        for (int i = 0; i<tiles.Length -1; i++)
         {
-                if (tiles[i].GetComponent<Tile>().clicked && BuildMode)
+
+                if (tiles[i].GetComponent<Tile>().clicked && BuildMode && currentCoins >= tempPrice)
                 {
+                    waveManager.GetComponent<WaveManager>().coinCounter -= tempPrice;
+                waveManager.GetComponent<WaveManager>().UpdateCoinUI();
                     currentID = i;
                     tiles[i].GetComponent<Tile>().ChangeStatus();
                     GameObject temp2 = Instantiate(currentPref, tiles[i].transform.position, Quaternion.identity) as GameObject;
