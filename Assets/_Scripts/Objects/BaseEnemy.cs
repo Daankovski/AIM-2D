@@ -4,18 +4,29 @@ using System.Collections;
 public class BaseEnemy : Health {
 
     public Transform target;
+    private GameObject waveManager;
     public float speed;
     public bool isAttacking = false;
     [SerializeField]
-    private int damage = 10;
+    private float damage = 10;
 
-    // Use this for initialization
+    private float scaleX;
+    
     void Start () {
-	
-	}
+        
+        Debug.Log(currentHealth);
+        //finds the target called flag.
+        target = GameObject.Find("flag").transform;
+        scaleX = transform.localScale.x;
+        waveManager = GameObject.Find("/UI panels/nextwave");
+        damage += waveManager.GetComponent<WaveManager>().waveCounter;
+        speed += waveManager.GetComponent<WaveManager>().waveCounter / 10f;
+        maxHealth += waveManager.GetComponent<WaveManager>().waveCounter * 10f;
+
+        currentHealth = maxHealth;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
-        
         //if the enemy collides with an obstacle with a trigger event, it will stop and attack.
         isAttacking = true;
         StartCoroutine(Attack(other));
@@ -51,9 +62,29 @@ public class BaseEnemy : Health {
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0)
+        if(target !=  null)
+        {
+
+            if (target.transform.position.x > transform.position.x)
+            {
+                
+                transform.localScale = new Vector3(-scaleX, transform.localScale.y, 1f);
+
+            }
+            else
+            {
+                transform.localScale = new Vector3(scaleX, transform.localScale.y, 1f);
+                //float x = transform.localScale.x;
+                //transform.localScale = new Vector3(x, transform.localScale.y, 1f);
+            }
+            
+        }
+        
+        if(currentHealth <= 0)
         {
             Destroy(this.gameObject);
+            waveManager.GetComponent<WaveManager>().coinCounter += Mathf.Ceil( damage * speed /2);
+            waveManager.GetComponent<WaveManager>().UpdateCoinUI();
         }
         Bar();
         if (!isAttacking)

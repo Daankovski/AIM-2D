@@ -37,6 +37,8 @@ public class BaseTurret : Health {
     
 
     void Start () {
+        currentHealth = maxHealth;
+
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = true;
         hitPoint = transform.FindChild("hitpoint").gameObject;
@@ -66,27 +68,29 @@ public class BaseTurret : Health {
         Collider2D[] targets = Physics2D.OverlapCircleAll(this.transform.position, range, 1 << LayerMask.NameToLayer("enemy"));
         if (targets.Length != 0)
         {
+            Debug.Log(targets.Length);
+            int i = Random.Range(0,targets.Length);
             //laser or projectile
             if(!projectileIsBullet)
             {
                 //Debug.DrawLine(this.transform.position, targets[0].transform.position, Color.white, 0.5f);
                 hitPoint.SetActive(true);
 
-                hitPoint.transform.position = targets[0].transform.position;
+                hitPoint.transform.position = targets[i].transform.position;
                 Vector3 temp = hitPoint.transform.position;
                 temp.z -= 1f;
                 hitPoint.transform.position = temp;
 
                 lineRenderer.enabled = true;
                 
-                Vector3 hitPos = (targets[0].transform.position -transform.position)*1.9f;
+                Vector3 hitPos = (targets[i].transform.position -transform.position)*1.9f;
                 hitPos.z -= 1;
                 lineRenderer.SetPosition(1, hitPos);
             }
             else
             {
                 GameObject temp = Instantiate(bulletPref, transform.position, Quaternion.identity) as GameObject;
-                temp.GetComponent<Bullet>().DeclareTarget(targets[0].gameObject);
+                temp.GetComponent<Bullet>().DeclareTarget(targets[i].gameObject);
             }
             
 
@@ -114,7 +118,7 @@ public class BaseTurret : Health {
     }
     void Update () {
 
-        if (health <=0)
+        if (currentHealth <=0)
         {
             Destroy(this.gameObject);
             grid.GetComponent<NodeGrid>().ClearTile(IDpos);

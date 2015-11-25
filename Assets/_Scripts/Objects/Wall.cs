@@ -7,6 +7,7 @@ public class Wall : Health {
 
     // Use this for initialization
     void Start () {
+        currentHealth = maxHealth;
         grid = GameObject.Find("Grid");
         IDpos = grid.GetComponent<NodeGrid>().currentID;
 
@@ -14,7 +15,7 @@ public class Wall : Health {
 
     // Update is called once per frame
     void Update () {
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(this.gameObject);
             grid.GetComponent<NodeGrid>().ClearTile(IDpos);

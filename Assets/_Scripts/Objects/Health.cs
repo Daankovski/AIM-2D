@@ -2,27 +2,30 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-    public float health =100;
+    public float maxHealth = 100;
+    protected float currentHealth = 100;
     private GameObject healthBar;
     private float alpha = 1;
 
     void Start () {
         //haalt de healthbar object in de child.
+        currentHealth = maxHealth;
+        Debug.Log(currentHealth);
         healthBar = transform.FindChild("health").gameObject;
     }
 
-    public void Damage(int damagevalue)
+    public void Damage(float damagevalue)
     {
         //als het object aan schade lijdt, wordt de health bar ge weergeeft en wordt de health vermindert, 
         //ook checkt ie of het object 0 helath heeft.
-        health -= damagevalue;
+        currentHealth -= damagevalue;
         alpha = 1;
         if(healthBar != null)
         {
-            healthBar.transform.localScale = new Vector3(health / 50, 2, 1f);
+            healthBar.transform.localScale = new Vector3(currentHealth / maxHealth *2, 2, 1f);
         }
         
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             StartCoroutine(Death());
         }
