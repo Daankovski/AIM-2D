@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Health : MonoBehaviour {
-    public float health =100;
+    [SerializeField]
+    private float f_baseLives = 100f;
     private GameObject healthBar;
     private float alpha = 1;
 
@@ -11,18 +12,30 @@ public class Health : MonoBehaviour {
         healthBar = transform.FindChild("health").gameObject;
     }
 
-    public void Damage(int damagevalue)
+    public float i_Lives
+    {
+        get
+        {
+            return f_baseLives;
+        }
+        set
+        {
+            f_baseLives = value;
+        }
+    }
+    
+    public void Damage(float damagevalue)
     {
         //als het object aan schade lijdt, wordt de health bar ge weergeeft en wordt de health vermindert, 
         //ook checkt ie of het object 0 helath heeft.
-        health -= damagevalue;
+        f_baseLives -= damagevalue;
         alpha = 1;
         if(healthBar != null)
         {
-            healthBar.transform.localScale = new Vector3(health / 50, 2, 1f);
+            healthBar.transform.localScale = new Vector3(f_baseLives / 50, 2, 1f);
         }
         
-        if (health <= 0)
+        if (f_baseLives <= 0)
         {
             StartCoroutine(Death());
         }

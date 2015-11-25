@@ -8,6 +8,7 @@ public class BaseEnemy : Health {
     public bool isAttacking = false;
     [SerializeField]
     private int damage = 10;
+    private Health health;
 
     // Use this for initialization
     void Start () {
@@ -51,7 +52,7 @@ public class BaseEnemy : Health {
     // Update is called once per frame
     void Update()
     {
-        if(health <= 0)
+        if(health.i_Lives <= 0)
         {
             Destroy(this.gameObject);
         }

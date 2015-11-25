@@ -34,7 +34,8 @@ public class BaseTurret : Health {
     [SerializeField]
     private int upgradeLvl = 1;
     private int maxLvl = 5;
-    
+
+    private Health health;
 
     void Start () {
         lineRenderer = GetComponent<LineRenderer>();
@@ -114,7 +115,7 @@ public class BaseTurret : Health {
     }
     void Update () {
 
-        if (health <=0)
+        if (health.i_Lives <= 0)
         {
             Destroy(this.gameObject);
             grid.GetComponent<NodeGrid>().ClearTile(IDpos);
