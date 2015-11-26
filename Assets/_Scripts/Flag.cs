@@ -5,6 +5,8 @@ public class Flag : MonoBehaviour {
     private GameObject ObjFlag;
     private GameObject ObjPlayer;
     private Health scr_Health;
+    [SerializeField]
+    private int Timer = 0;
 
     [SerializeField]
     private int i_PickupCooldown = 0;
@@ -29,6 +31,10 @@ public class Flag : MonoBehaviour {
         ObjFlag = GameObject.Find("Flag");
         scr_Health = ObjFlag.GetComponent<Health>();
 	}
+
+    void Update() {
+        FlagGrowth();
+    }
 
 	void FixedUpdate () {
         if (isPickedUp) {
@@ -68,9 +74,23 @@ public class Flag : MonoBehaviour {
             }
             else {
                 isPickedUp = false;
-                isCooldown = true;
-                
+                isCooldown = true;   
             }
         }
+    }
+
+    void FlagGrowth() {
+        Timer+= 1;
+
+        if (isPickedUp && Timer == 100)
+        {
+            Timer = 0;
+            scr_Health.maxHealth += 5;
+        }
+        else if(!isPickedUp && Timer == 100) {
+            Timer = 0;
+            scr_Health.maxHealth += 1;
+        }
+        
     }
 }
