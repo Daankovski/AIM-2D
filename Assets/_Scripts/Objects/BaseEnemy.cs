@@ -44,10 +44,15 @@ public class BaseEnemy : Health {
     IEnumerator Attack(Collider2D other)
     {
         Wall wallscript = other.GetComponent<Wall>();
+
         if(wallscript != null)
         {
             other.GetComponent<Wall>().Damage(damage);
         }
+        //else if()
+        //{
+        //
+        //}
         else
         {
             other.GetComponent<Health>().Damage(damage);

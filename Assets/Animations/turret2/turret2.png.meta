@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: ead626a44b50f214fbe45e7a67e6a7fc
+timeCreated: 1448551112
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: turret2_0
+    21300002: turret2_1
+    21300004: turret2_2
+    21300006: turret2_3
+    21300008: turret2_4
+    21300010: turret2_5
+    21300012: turret2_6
+    21300014: turret2_7
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 180
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: turret2_0
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 570
+        width: 237
+        height: 461
+      alignment: 9
+      pivot: {x: .49999994, y: .669896841}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turret2_1
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 570
+        width: 272
+        height: 465
+      alignment: 9
+      pivot: {x: .550897062, y: .665272176}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turret2_2
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 570
+        width: 356
+        height: 454
+      alignment: 9
+      pivot: {x: .662973642, y: .699599087}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turret2_3
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 570
+        width: 319
+        height: 451
+      alignment: 9
+      pivot: {x: .636233151, y: .587911308}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turret2_4
+      rect:
+        serializedVersion: 2
+        x: 1482
+        y: 567
+        width: 238
+        height: 444
+      alignment: 9
+      pivot: {x: .508894205, y: .638260841}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turret2_5
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 73
+        width: 319
+        height: 455
+      alignment: 9
+      pivot: {x: .354144782, y: .60588026}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turret2_6
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 73
+        width: 356
+        height: 463
+      alignment: 9
+      pivot: {x: .350394934, y: .588558972}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turret2_7
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 73
+        width: 272
+        height: 465
+      alignment: 9
+      pivot: {x: .455484271, y: .59395951}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
