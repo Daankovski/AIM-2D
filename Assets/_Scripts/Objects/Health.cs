@@ -11,7 +11,6 @@ public class Health : MonoBehaviour {
     void Start () {
         //haalt de healthbar object in de child.
         currentHealth = maxHealth;
-        Debug.Log(currentHealth);
         healthBar = transform.FindChild("health").gameObject;
     }
 

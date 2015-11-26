@@ -12,7 +12,11 @@ public class Player : MonoBehaviour {
 
 	void Start () {
         ObjPlayer = GameObject.Find("Player");
+<<<<<<< HEAD
         ObjFlag = GameObject.Find("Flag");
+=======
+        ObjFlag = GameObject.Find("flag");
+>>>>>>> f2b4a21fb7bc640fc63579df0d07fce13c1e1905
 
         scr_Health = ObjPlayer.GetComponent<Health>();
         scr_Flag = ObjFlag.GetComponent<Flag>();
@@ -49,11 +53,21 @@ public class Player : MonoBehaviour {
     void CarryingObject() {
         if (scr_Flag._isCarrying)
         {
+<<<<<<< HEAD
             f_speed = .7f;
             if (i_leechTimer >= 10)
             {
                 i_leechTimer = 0;
                 scr_Health.maxHealth -= .5f;            }
+=======
+            f_speed = 1.5f;
+            if (i_leechTimer >= 10 && ObjPlayer != null)
+            {
+                i_leechTimer = 0;
+                //scr_Health.maxHealth -= .5f;
+                scr_Health.Damage(0.5f);
+            }
+>>>>>>> f2b4a21fb7bc640fc63579df0d07fce13c1e1905
             else {
                 i_leechTimer ++;
             }
