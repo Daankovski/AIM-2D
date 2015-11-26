@@ -11,9 +11,12 @@ public class BaseEnemy : Health {
     private float damage = 10;
 
     private float scaleX;
+    private Animator animator;
     
     void Start () {
-        
+
+        animator = GetComponent<Animator>();
+        animator.SetBool("FacingTheCamera", false);
         Debug.Log(currentHealth);
         //finds the target called flag.
         target = GameObject.Find("flag").transform;
@@ -21,7 +24,7 @@ public class BaseEnemy : Health {
         waveManager = GameObject.Find("/UI panels/nextwave");
         damage += waveManager.GetComponent<WaveManager>().waveCounter;
         speed += waveManager.GetComponent<WaveManager>().waveCounter / 10f;
-        maxHealth += waveManager.GetComponent<WaveManager>().waveCounter * 10f;
+        maxHealth += waveManager.GetComponent<WaveManager>().waveCounter * 20f;
 
         currentHealth = maxHealth;
     }
@@ -29,12 +32,13 @@ public class BaseEnemy : Health {
     {
         //if the enemy collides with an obstacle with a trigger event, it will stop and attack.
         isAttacking = true;
+        animator.SetBool("Attacking", true);
         StartCoroutine(Attack(other));
     }
     void OnTriggerExit2D()
     {
         isAttacking = false;
-        
+        animator.SetBool("Attacking", false);
     }
 
     IEnumerator Attack(Collider2D other)
@@ -56,7 +60,7 @@ public class BaseEnemy : Health {
         }
         else
         {
-            isAttacking = false;
+            OnTriggerExit2D();
         }
     }
     // Update is called once per frame
@@ -64,18 +68,22 @@ public class BaseEnemy : Health {
     {
         if(target !=  null)
         {
-
-            if (target.transform.position.x > transform.position.x)
+            if (target.transform.position.y > transform.position.y)
             {
                 
+                animator.SetBool("FacingTheCamera", false);
+            }
+            else
+            {
+                animator.SetBool("FacingTheCamera", true);
+            }
+            if (target.transform.position.x > transform.position.x)
+            {
                 transform.localScale = new Vector3(-scaleX, transform.localScale.y, 1f);
-
             }
             else
             {
                 transform.localScale = new Vector3(scaleX, transform.localScale.y, 1f);
-                //float x = transform.localScale.x;
-                //transform.localScale = new Vector3(x, transform.localScale.y, 1f);
             }
             
         }
@@ -83,7 +91,7 @@ public class BaseEnemy : Health {
         if(currentHealth <= 0)
         {
             Destroy(this.gameObject);
-            waveManager.GetComponent<WaveManager>().coinCounter += Mathf.Ceil( damage * speed /2);
+            waveManager.GetComponent<WaveManager>().coinCounter += Mathf.Ceil( damage * speed / 3);
             waveManager.GetComponent<WaveManager>().UpdateCoinUI();
         }
         Bar();
