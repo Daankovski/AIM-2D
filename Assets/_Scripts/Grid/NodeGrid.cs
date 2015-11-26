@@ -41,7 +41,11 @@ public class NodeGrid : MonoBehaviour {
         currentID = 50;
         tiles[50].GetComponent<Tile>().ChangeStatus();
         GameObject temp2 = Instantiate(prefTurret2, tiles[50].transform.position, Quaternion.identity) as GameObject;
-
+        /*
+        currentID = 82;
+        tiles[82].GetComponent<Tile>().ChangeStatus();
+        GameObject temp3 = Instantiate(prefTurret2, tiles[82].transform.position, Quaternion.identity) as GameObject;
+        */
     }
     public void ClearTile(int position)
     {
