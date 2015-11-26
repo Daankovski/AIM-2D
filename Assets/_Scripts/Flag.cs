@@ -53,7 +53,7 @@ public class Flag : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            scr_Health.i_Lives -= 5;
+            scr_Health.maxHealth -= 5;
         }
     }
 

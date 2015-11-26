@@ -42,18 +42,18 @@ public class Player : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Enemy") {
-            scr_Health.i_Lives -= 5 ;
+            scr_Health.maxHealth -= 5 ;
         }
     }
 
     void CarryingObject() {
         if (scr_Flag._isCarrying)
         {
-            f_speed = .5f;
+            f_speed = .7f;
             if (i_leechTimer >= 10)
             {
                 i_leechTimer = 0;
-                scr_Health.i_Lives -= .5f;            }
+                scr_Health.maxHealth -= .5f;            }
             else {
                 i_leechTimer ++;
             }
