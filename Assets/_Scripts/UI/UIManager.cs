@@ -5,14 +5,12 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField]
     private GameObject grid;
-
     [SerializeField]
     private Text turretPriceText;
     [SerializeField]
     private Text turret2PriceText;
     [SerializeField]
     private Text wallPriceText;
-
     [SerializeField]
     private Text coinCounterText;
 
@@ -44,6 +42,9 @@ public class UIManager : MonoBehaviour {
     }
 	public void DifferentBuild(int value)
     {
+        //wordt aan geroepen als de speler een van build knopjes klikt. 
+        //de value bepaalt welke prefrab wordt gemaakt op de grid als er op de tile is geklikt.
+
         turretButton.GetComponent<Button>().clicked = false;
         wallButton.GetComponent<Button>().clicked = false;
         turretButton2.GetComponent<Button>().clicked = false;
@@ -71,8 +72,9 @@ public class UIManager : MonoBehaviour {
     }
 
 	void Update () {
+        //maakt de prijs rood als de speler niet genoeg coins heeft.
         currentCoins = waveManager.GetComponent<WaveManager>().coinCounter;
-        if (currentCoins <= wallPrice)
+        if (currentCoins < wallPrice)
         {
             wallPriceText.color = Color.red;
         }
@@ -81,7 +83,7 @@ public class UIManager : MonoBehaviour {
             wallPriceText.color = Color.green;
         }
 
-        if (currentCoins <= turretPrice)
+        if (currentCoins < turretPrice)
         {
             turretPriceText.color = Color.red;
         }
@@ -90,7 +92,7 @@ public class UIManager : MonoBehaviour {
             turretPriceText.color = Color.green;
         }
 
-        if (currentCoins <= turret2Price)
+        if (currentCoins < turret2Price)
         {
             turret2PriceText.color = Color.red;
         }
@@ -99,6 +101,7 @@ public class UIManager : MonoBehaviour {
             turret2PriceText.color = Color.green;
         }
 
+        //als een van de build buttons geklikt wordt, dan gaat de grid in de buildmode.
         if (turretButton.GetComponent<Button>().clicked || turretButton2.GetComponent<Button>().clicked || wallButton.GetComponent<Button>().clicked)
         {
             grid.GetComponent<NodeGrid>().BuildMode = true;

@@ -1,0 +1,397 @@
+fileFormatVersion: 2
+guid: 391229ca3c008fb4a977e59a6f4343fb
+timeCreated: 1448566620
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: walk_animatie_player_0
+    21300002: walk_animatie_player_1
+    21300004: walk_animatie_player_2
+    21300006: walk_animatie_player_3
+    21300008: walk_animatie_player_4
+    21300010: walk_animatie_player_5
+    21300012: walk_animatie_player_6
+    21300014: walk_animatie_player_7
+    21300016: walk_animatie_player_8
+    21300018: walk_animatie_player_9
+    21300020: walk_animatie_player_10
+    21300022: walk_animatie_player_11
+    21300024: walk_animatie_player_12
+    21300026: walk_animatie_player_13
+    21300028: walk_animatie_player_14
+    21300030: walk_animatie_player_15
+    21300032: walk_animatie_player_16
+    21300034: walk_animatie_player_17
+    21300036: walk_animatie_player_18
+    21300038: walk_animatie_player_19
+    21300040: walk_animatie_player_20
+    21300042: walk_animatie_player_21
+    21300044: walk_animatie_player_22
+    21300046: walk_animatie_player_23
+    21300048: walk_animatie_player_24
+    21300050: walk_animatie_player_25
+    21300052: walk_animatie_player_26
+    21300054: walk_animatie_player_27
+    21300056: walk_animatie_player_28
+    21300058: walk_animatie_player_29
+    21300060: walk_animatie_player_30
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 800
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: walk_animatie_player_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1713
+        width: 168
+        height: 335
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_1
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 1712
+        width: 157
+        height: 336
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_2
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1715
+        width: 143
+        height: 333
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_3
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 1715
+        width: 142
+        height: 332
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_4
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 1718
+        width: 151
+        height: 329
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_5
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 1718
+        width: 148
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_6
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 1718
+        width: 144
+        height: 329
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_7
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 1718
+        width: 140
+        height: 328
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_8
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 1718
+        width: 138
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_9
+      rect:
+        serializedVersion: 2
+        x: 1387
+        y: 1715
+        width: 142
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_10
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 1717
+        width: 133
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_11
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 1719
+        width: 130
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_12
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 1719
+        width: 131
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_13
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1381
+        width: 155
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_14
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 1381
+        width: 177
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_15
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 1379
+        width: 185
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_16
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1377
+        width: 194
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_17
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 1376
+        width: 203
+        height: 329
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_18
+      rect:
+        serializedVersion: 2
+        x: 968
+        y: 1375
+        width: 215
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_19
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 1374
+        width: 227
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_20
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 1376
+        width: 229
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_21
+      rect:
+        serializedVersion: 2
+        x: 1691
+        y: 1377
+        width: 232
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_22
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 1035
+        width: 236
+        height: 326
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_23
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 1036
+        width: 239
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_24
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 1035
+        width: 242
+        height: 327
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_25
+      rect:
+        serializedVersion: 2
+        x: 803
+        y: 1032
+        width: 246
+        height: 330
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_26
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 1033
+        width: 230
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_27
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 1033
+        width: 217
+        height: 331
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_28
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 1032
+        width: 203
+        height: 332
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_29
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 1032
+        width: 190
+        height: 333
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walk_animatie_player_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 689
+        width: 180
+        height: 334
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

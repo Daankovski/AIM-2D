@@ -5,8 +5,6 @@ public class Flag : MonoBehaviour {
     private GameObject ObjFlag;
     private GameObject ObjPlayer;
     private Health scr_Health;
-    [SerializeField]
-    private int Timer = 0;
 
     [SerializeField]
     private int i_PickupCooldown = 0;
@@ -28,16 +26,13 @@ public class Flag : MonoBehaviour {
     
 	void Start () {
         ObjPlayer = GameObject.Find("Player");
-        ObjFlag = GameObject.Find("Flag");
+        ObjFlag = GameObject.Find("flag");
         scr_Health = ObjFlag.GetComponent<Health>();
 	}
 
-    void Update() {
-        FlagGrowth();
-    }
-
 	void FixedUpdate () {
-        if (isPickedUp) {
+        
+        if (isPickedUp && ObjPlayer !=null) {
             ObjFlag.transform.position = new Vector3(ObjPlayer.transform.position.x, ObjPlayer.transform.position.y, 0f);
         }
         if (!isCooldown)
@@ -65,6 +60,7 @@ public class Flag : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
+        Debug.Log("work");
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!isPickedUp)
@@ -74,23 +70,9 @@ public class Flag : MonoBehaviour {
             }
             else {
                 isPickedUp = false;
-                isCooldown = true;   
+                isCooldown = true;
+                
             }
         }
-    }
-
-    void FlagGrowth() {
-        Timer+= 1;
-
-        if (isPickedUp && Timer == 100)
-        {
-            Timer = 0;
-            scr_Health.maxHealth += 5;
-        }
-        else if(!isPickedUp && Timer == 100) {
-            Timer = 0;
-            scr_Health.maxHealth += 1;
-        }
-        
     }
 }

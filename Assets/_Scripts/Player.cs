@@ -9,11 +9,16 @@ public class Player : MonoBehaviour {
     private GameObject ObjFlag;
     private Health scr_Health;
     private Flag scr_Flag;
-
+    private Vector3 scale;
+    private Animator anim;
 	void Start () {
-        ObjPlayer = GameObject.Find("Player");
-        ObjFlag = GameObject.Find("Flag");
+        
+        scale = transform.localScale;
 
+        ObjPlayer = GameObject.Find("Player");
+        ObjFlag = GameObject.Find("flag");
+
+        anim = GetComponent<Animator>();
         scr_Health = ObjPlayer.GetComponent<Health>();
         scr_Flag = ObjFlag.GetComponent<Flag>();
 
@@ -35,6 +40,22 @@ public class Player : MonoBehaviour {
         float y = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(x, y, 0);
         transform.Translate(movement * f_speed * Time.deltaTime);
+        if (x <-0.5 )
+        {
+            anim.SetBool("isWalking", true);
+            scale.x = 2.285f;
+            transform.localScale = scale;
+        }
+        else if(x > 0.5)
+        {
+            anim.SetBool("isWalking", true);
+            scale.x = -2.285f;
+            transform.localScale = scale;
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
     }
     //
 
@@ -49,11 +70,13 @@ public class Player : MonoBehaviour {
     void CarryingObject() {
         if (scr_Flag._isCarrying)
         {
-            f_speed = .7f;
-            if (i_leechTimer >= 10)
+            f_speed = 1.5f;
+            if (i_leechTimer >= 10 && ObjPlayer != null)
             {
                 i_leechTimer = 0;
-                scr_Health.maxHealth -= .5f;            }
+                //scr_Health.maxHealth -= .5f;
+                scr_Health.Damage(0.5f);
+            }
             else {
                 i_leechTimer ++;
             }

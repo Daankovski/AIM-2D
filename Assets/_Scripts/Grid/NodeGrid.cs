@@ -22,6 +22,8 @@ public class NodeGrid : MonoBehaviour {
     private GameObject uiManager;
     [SerializeField]
     private GameObject waveManager;
+    [SerializeField]
+    private AudioClip buildSound;
 
     void Start () {
         int z = 0;
@@ -38,14 +40,10 @@ public class NodeGrid : MonoBehaviour {
             
         }
 
+        //zet alvast een turret neer als de spel wordt gestart.
         currentID = 50;
         tiles[50].GetComponent<Tile>().ChangeStatus();
         GameObject temp2 = Instantiate(prefTurret2, tiles[50].transform.position, Quaternion.identity) as GameObject;
-        /*
-        currentID = 82;
-        tiles[82].GetComponent<Tile>().ChangeStatus();
-        GameObject temp3 = Instantiate(prefTurret2, tiles[82].transform.position, Quaternion.identity) as GameObject;
-        */
     }
     public void ClearTile(int position)
     {
@@ -87,23 +85,20 @@ public class NodeGrid : MonoBehaviour {
             }
         }
 
-
         //als er een tile wordt geklikt in de buildmode komt er een object op die plaats (tot nu toe een turret!)
         float tempPrice = uiManager.GetComponent<UIManager>().tempPrice;
         float currentCoins = uiManager.GetComponent<UIManager>().currentCoins;
         for (int i = 0; i<tiles.Length -1; i++)
         {
-
-                if (tiles[i].GetComponent<Tile>().clicked && BuildMode && currentCoins >= tempPrice)
-                {
-                    waveManager.GetComponent<WaveManager>().coinCounter -= tempPrice;
+           if (tiles[i].GetComponent<Tile>().clicked && BuildMode && currentCoins >= tempPrice)
+           {
+                GetComponent<AudioSource>().PlayOneShot(buildSound);
+                waveManager.GetComponent<WaveManager>().coinCounter -= tempPrice;
                 waveManager.GetComponent<WaveManager>().UpdateCoinUI();
-                    currentID = i;
-                    tiles[i].GetComponent<Tile>().ChangeStatus();
-                    GameObject temp2 = Instantiate(currentPref, tiles[i].transform.position, Quaternion.identity) as GameObject;
-                    
-                }
+                currentID = i;
+                tiles[i].GetComponent<Tile>().ChangeStatus();
+                GameObject temp2 = Instantiate(currentPref, tiles[i].transform.position, Quaternion.identity) as GameObject;
+            }
         }
     }
-
 }

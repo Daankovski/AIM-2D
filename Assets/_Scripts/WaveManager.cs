@@ -9,6 +9,13 @@ public class WaveManager : MonoBehaviour {
     private GameObject prefEnemy2;
     [SerializeField]
     private GameObject flag;
+    [SerializeField]
+    private GameObject player;
+    [SerializeField]
+    private GameObject end;
+    [SerializeField]
+    private Text endText;
+
     private float totalAmountOFEnemies = 2;
     public float waveCounter = 0;
     public float coinCounter = 100;
@@ -18,9 +25,21 @@ public class WaveManager : MonoBehaviour {
     [SerializeField]
     private Text coinCounterText;
     void Start() {
+        Time.timeScale = 1;
         UpdateWaveUI();
         UpdateCoinUI();
 
+    }
+    void Update()
+    {
+        //als de vlag of speler dood is, dan word de game gefreesed en komt de game over screen.
+        if(flag == null || player == null)
+        {
+            Debug.Log("dead");
+            Time.timeScale = 0;
+            end.SetActive(true);
+            endText.text = "You lasted till wave: " + waveCounter;
+        }
     }
     void UpdateWaveUI()
     {
@@ -34,6 +53,7 @@ public class WaveManager : MonoBehaviour {
 
     void ProduceWave()
     {
+        //bepaalt het aantal enemies per wave.
         if(totalAmountOFEnemies <50)
         {
             totalAmountOFEnemies += waveCounter;
@@ -45,7 +65,8 @@ public class WaveManager : MonoBehaviour {
     }
     IEnumerator ProduceEnemy()
     {
-        if(flag != null)
+        //maakt een willekeurige positie bij de zij kanten aan.
+        if(flag != null && player != null)
         {
             float y = Random.Range(-10f,0f);
             float x;
@@ -59,6 +80,7 @@ public class WaveManager : MonoBehaviour {
                 x = 10;
             }
             Vector3 startPosition = new Vector3(x, y, 0.5f);
+            //instantieert een van de twee soorten enemies.
             if(Random.Range(0f,1f) >= 0.7f)
             {
                 GameObject temp = Instantiate(prefEnemy, startPosition, Quaternion.identity) as GameObject;
@@ -70,6 +92,7 @@ public class WaveManager : MonoBehaviour {
             
         }
 
+        //wacht tussen de 0 en 1 seconden voor dat ie een nieuwe enemy produceert.
         float t = Random.Range(0f,1f);
         yield return new WaitForSeconds(t);
         z++;
@@ -83,10 +106,14 @@ public class WaveManager : MonoBehaviour {
 
     void OnMouseDown()
     {
+        //als er op de next wave button geklikt wordt (de script zit op dat object).
+        if (flag != null && player != null)
+        {
             waveCounter++;
             UpdateWaveUI();
             ProduceWave();
             Debug.Log("next wave!");
+        }
     }
     void OnMouseEnter()
     {
